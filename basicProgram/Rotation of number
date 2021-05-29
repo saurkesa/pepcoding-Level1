@@ -26,8 +26,9 @@ public class RotateNumber {
 			temp = temp / 10;
 			nod++;
 		}
-
-		k = k % nod;
+                handle if k is more length of dogit of number
+		k = k % nod; 
+		// handle negative rotation make it positive rotation
 		if (k < 0) {
 			k = k + nod;
 		}
