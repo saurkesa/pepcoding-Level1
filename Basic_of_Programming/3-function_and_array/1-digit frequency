@@ -1,0 +1,31 @@
+*
+ input 1234 1
+output 1
+ */
+public class DigitFrequency {
+
+	private static int getDigitFrequency(int n, int d) {
+
+		int count = 0;
+		while (n != 0) {
+			int rem = n % 10;
+			if (rem == d) {
+				count++;
+			}
+			n = n / 10;
+		}
+		return count;
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int d = s1.nextInt();
+		int f =getDigitFrequency(n, d);
+		System.out.println(f);
+
+	}
+
+}
