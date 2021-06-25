@@ -1,0 +1,33 @@
+import java.util.Scanner;
+/*
+  input  111001 2
+output 57
+ */
+public class AnyBaseToDecimal {
+
+	private static int getValueInDecimal(int n, int b) {
+		int rv = 0;
+		int p = 1;
+
+		while (n > 0) {
+			int rem = n % 10;
+			n = n / 10;
+			rv = rv + rem * p;
+
+			p = p * b;
+
+		}
+		return rv;
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int b = s1.nextInt();
+		int num = getValueInDecimal(n, b);
+		System.out.println(num);
+
+	}
+
+}
