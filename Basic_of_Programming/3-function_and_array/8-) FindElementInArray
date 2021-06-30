@@ -1,0 +1,45 @@
+
+import java.util.Scanner;
+
+/*
+ input 
+ total element  :3
+1
+2
+1
+element to search in array :-1
+
+ output : index :-0
+ */
+public class FindElementInArray {
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+
+		int[] arr = new int[n];
+
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+
+		int searchElement = s1.nextInt();
+
+		int index = findElementInArray(searchElement, arr);
+		System.out.println(index);
+
+	}
+
+	private static int findElementInArray(int searchElement, int[] arr) {
+
+		int index = -1;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == searchElement) {
+				index = i;
+				break;
+			}
+		}
+		return index;
+
+	}
+}
