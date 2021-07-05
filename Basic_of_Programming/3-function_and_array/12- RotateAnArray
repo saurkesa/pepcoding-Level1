@@ -1,0 +1,65 @@
+import java.util.Scanner;
+/*
+ input  n=4
+1
+2
+3
+4
+k=2
+
+ output  3 4 1 2
+ */
+
+public class RotateAnArray {
+
+	private static void reverseAnArray(int[] a,int i, int j) {
+
+	
+
+		while (i < j) {
+			int temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+			i++;
+			j--;
+
+		}
+
+	}
+
+	private static void rotateArray(int[] a, int k) {
+
+		k = k % a.length;
+		if (k < 0) {
+			k = k + a.length;
+		}
+		reverseAnArray(a, 0, a.length - k - 1);
+		reverseAnArray(a, a.length - k, a.length - 1);
+		reverseAnArray(a, 0, a.length - 1);
+
+	}
+
+	private static void display(int[] a) {
+		for (int a1 : a) {
+			System.out.print(a1 + " ");
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] a = new int[n];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = s1.nextInt();
+		}
+
+		int k = s1.nextInt();
+
+		rotateArray(a, k);
+		display(a);
+
+	}
+
+}
