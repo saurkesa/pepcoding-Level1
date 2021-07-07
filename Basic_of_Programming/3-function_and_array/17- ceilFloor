@@ -1,0 +1,53 @@
+import java.util.Scanner;
+/*
+ input  5
+11
+22
+33
+44
+55
+element to search 34
+
+ output  ceil is 44 and floor is 33
+ */
+public class CeilFloor {
+
+	private static void ceilFloor(int[] a, int search) {
+
+		int low = 0;
+		int high = a.length - 1;
+		int ceil = 0;
+		int floor = 0;
+		while (low <= high) {
+			int mid = (low + high) / 2;
+
+			if (a[mid] > search) {
+				high = mid - 1;
+				ceil = a[mid];
+
+			} else if (a[mid] < search) {
+				low = mid + 1;
+				floor = a[mid];
+			} else {
+				ceil = a[mid];
+				floor = a[mid];
+				break;
+			}
+		}
+		System.out.println("ceil is " + ceil + " and floor is " + floor);
+	}
+
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] a = new int[n];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = s1.nextInt();
+		}
+
+		int search = s1.nextInt();
+		ceilFloor(a, search);
+
+	}
+
+}
