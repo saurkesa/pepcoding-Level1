@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+// note : 1st matrix column equal to second  matrix row
+// new matric will be r1,c2
+// while multiply first matrix row will same and second matrix column will same
+public class MatrixMul {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int r1 = s1.nextInt();
+		int c1 = s1.nextInt();
+		int[][] m1 = new int[r1][c1];
+
+		for (int i = 0; i < m1.length; i++) {
+			for (int j = 0; j < m1[i].length; j++) {
+				m1[i][j] = s1.nextInt();
+			}
+		}
+
+		int r2 = s1.nextInt();
+		int c2 = s1.nextInt();
+		int[][] m2 = new int[r2][c2];
+
+		for (int i = 0; i < m2.length; i++) {
+			for (int j = 0; j < m2[i].length; j++) {
+				m2[i][j] = s1.nextInt();
+			}
+		}
+
+		if (c1 != r2) {
+			System.out.println("invalid matrix");
+			return;
+		}
+
+		int[][] prod = new int[r1][c2];
+
+		for (int i = 0; i < prod.length; i++) {
+			for (int j = 0; j < prod[i].length; j++) {
+				for (int k = 0; k < c1; k++)
+					prod[i][j] += m1[i][k] * m2[k][j];
+			}
+		}
+		for (int i = 0; i < prod.length; i++) {
+			for (int j = 0; j < prod[i].length; j++) {
+				System.out.print(prod[i][j] + "\t");
+			}
+			System.out.println();
+		}
+
+	}
+
+}
