@@ -1,0 +1,73 @@
+import java.util.Scanner;
+/*
+ input
+ matrix 3,3
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+ output
+ 1
+4
+7
+8
+9
+6
+3
+2
+5
+ */
+public class SpiralDisplay {
+
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int r = s1.nextInt();
+		int c = s1.nextInt();
+		int[][] arr = new int[r][c];
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				arr[i][j] = s1.nextInt();
+			}
+		}
+
+		int minr = 0;
+		int minc = 0;
+		int maxr = arr.length - 1;
+		int maxc = arr[0].length - 1;
+		int arrl = r * c;
+		int count = 0;
+
+		while (count < arrl) {
+			for (int j = minc, i = minr; i <= maxr && count < arrl; i++) {
+				System.out.println(arr[i][j]);
+				count++;
+			}
+			minc++;
+			for (int j = minc, i = maxr; j <= maxc && count < arrl; j++) {
+				System.out.println(arr[i][j]);
+				count++;
+			}
+			maxr--;
+			for (int j = maxc, i = maxr; i >= minr && count < arrl; i--) {
+				System.out.println(arr[i][j]);
+				count++;
+			}
+			maxc--;
+			for (int j = maxc, i = minr; j >= minc && count < arrl; j--) {
+				System.out.println(arr[i][j]);
+				count++;
+			}
+			minr++;
+		}
+
+	}
+
+}
