@@ -1,0 +1,66 @@
+/*
+ input  matrix 3 3
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+ output
+ 7 4 1 
+8 5 2 
+9 6 3 
+ */
+public class RotateBy90 {
+
+	public static void display(int[][] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				System.out.print(arr[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int r = s1.nextInt();
+		int c = s1.nextInt();
+		int[][] arr = new int[r][c];
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				arr[i][j] = s1.nextInt();
+			}
+		}
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i; j < arr[0].length; j++) {
+				int temp = arr[i][j];
+				arr[i][j] = arr[j][i];
+				arr[j][i] = temp;
+
+			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			int li = 0;
+			int ri = arr[i].length - 1;
+			while (li < ri) {
+
+				int temp = arr[i][li];
+				arr[i][li] = arr[i][ri];
+				arr[i][ri] = temp;
+				li++;
+				ri--;
+
+			}
+		}
+		display(arr);
+	}
+
+}
