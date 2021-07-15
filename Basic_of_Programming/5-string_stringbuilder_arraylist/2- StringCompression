@@ -1,0 +1,63 @@
+
+import java.util.Scanner;
+/*
+ * input aabbcccdee
+
+ * output 
+ * abcde
+a2b2c3de2
+ */
+public class StringCompression {
+
+	private static String compression1(String s) {
+
+		String str = s.charAt(0) + "";
+		for (int i = 1; i < s.length(); i++) {
+			char cur = s.charAt(i);
+			char prev = s.charAt(i - 1);
+			if (cur != prev) {
+				str += cur;
+			}
+		}
+		return str;
+	}
+
+	private static String compression2(String s) {
+
+		String str = s.charAt(0) + "";
+		int count = 1;
+
+		for (int i = 1; i < s.length(); i++) {
+			char cur = s.charAt(i);
+			char prev = s.charAt(i - 1);
+			if (cur == prev) {
+				count++;
+			} else {
+				if (count > 1) {
+					str += count;
+					count = 1;
+				}
+				str += cur;
+			}
+		}
+		if (count > 1) {
+
+			str += count;
+		}
+
+		return str;
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+
+		String s = s1.nextLine();
+
+		System.out.println(compression1(s));
+
+		System.out.println(compression2(s));
+
+	}
+
+}
