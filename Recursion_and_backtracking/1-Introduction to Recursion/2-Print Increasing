@@ -1,0 +1,31 @@
+import java.util.Scanner;
+/*
+ input 5
+ output 
+1
+2
+3
+4
+5
+ */
+public class PrintIncreasing {
+
+	private static void printIncreasing(int n) {
+		
+		if(n==0)
+		{
+			return;
+		}
+		printIncreasing(n-1);
+		System.out.println(n);
+		
+	}
+	public static void main(String[] args) {
+	Scanner s1 = new Scanner(System.in);
+	int n=s1.nextInt();
+	printIncreasing(n);
+
+	}
+
+
+}
