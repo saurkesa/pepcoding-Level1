@@ -1,0 +1,39 @@
+import java.util.Scanner;
+/*
+ * input 3,10,20,30
+ * output
+ * 
+ * 1[10->20]
+2[10->30]
+1[20->30]
+3[10->20]
+1[30->10]
+2[30->20]
+1[10->20]
+
+ */
+public class TowerOfHanoi {
+	private static void toh(int n, int tw1, int tw2, int tw3) {
+		if (n == 0) {
+			return;
+		}
+
+		toh(n - 1, tw1, tw3, tw2);
+		System.out.println(n + "[" + tw1 + "->" + tw2 + "]");
+		toh(n - 1, tw3, tw2, tw1);
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int tw1 = s1.nextInt();
+		int tw2 = s1.nextInt();
+		int tw3 = s1.nextInt();
+
+		toh(n, tw1, tw2, tw3);
+
+	}
+
+}
