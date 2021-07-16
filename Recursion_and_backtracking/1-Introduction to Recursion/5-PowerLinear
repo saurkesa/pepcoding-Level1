@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+/*
+ * input 3 4
+ * output 81
+ */
+public class PowerLinear {
+	
+
+	private static int powerLinear(int n, int p) {
+
+		if (p == 0) {
+			return 1;
+		}
+
+		int npm1 = powerLinear(n, p - 1);
+		int xn = n * npm1;
+		return xn;
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int p = s1.nextInt();
+		int powerLinear = powerLinear(n, p);
+		System.out.println(powerLinear);
+		
+
+	}
+
+}
