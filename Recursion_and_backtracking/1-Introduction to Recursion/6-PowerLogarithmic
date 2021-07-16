@@ -1,0 +1,31 @@
+import java.util.Scanner;
+/*
+ * input 10,4
+ * output 10000
+ * complexity lograithimic
+ */
+public class PowerLogarithmic {
+	private static int power(int x, int n) {
+
+		if (n == 0) {
+			return 1;
+		}
+		int xpnb2 = power(x, n / 2);
+		int xpn = xpnb2 * xpnb2;
+		if (n % 2 == 1) {
+			xpn = xpn * x;
+		}
+		return xpn;
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int x = s1.nextInt();
+		int n = s1.nextInt();
+		System.out.println(power(x, n));
+
+	}
+
+}
