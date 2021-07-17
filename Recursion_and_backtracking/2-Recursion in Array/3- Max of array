@@ -1,0 +1,40 @@
+import java.util.Scanner;
+/*
+ * input 5
+11
+22
+33
+21
+12
+
+output 33
+ */
+public class MaxInArray {
+	private static int maxOfArray(int[] arr, int i) {
+
+		if(i==arr.length-1)
+		{
+			return arr[i];
+		}
+		int misa = maxOfArray(arr, i + 1);
+		if (misa > arr[i]) {
+			return misa;
+		} else {
+			return arr[i];
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+		int maxOfArray = maxOfArray(arr, 0);
+		System.out.println(maxOfArray);
+
+	}
+
+}
