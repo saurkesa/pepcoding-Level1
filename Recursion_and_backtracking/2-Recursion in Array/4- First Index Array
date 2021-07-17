@@ -1,0 +1,40 @@
+import java.util.Scanner;
+/*
+ * input 5
+1
+2
+3
+2
+3
+element to search 2
+output 1
+ */
+public class FirstIndex {
+	private static int firstIndex(int[] arr, int i, int x) {
+
+		if (i == arr.length) {
+			return -1;
+		}
+		if (arr[i] == x) {
+			return i;
+		} else {
+			int fiisa = firstIndex(arr, i + 1, x);
+			return fiisa;
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+		int x = s1.nextInt();
+		int firstIndex = firstIndex(arr, 0, x);
+		System.out.println(firstIndex);
+
+	}
+
+}
