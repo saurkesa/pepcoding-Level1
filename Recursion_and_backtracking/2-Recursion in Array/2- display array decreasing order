@@ -1,0 +1,32 @@
+import java.util.Scanner;
+/*
+ input no of element 3- 1,2,3
+ output
+ 1
+ 2
+ 3
+ */
+public class DisplayArrayReverse {
+	private static void printArray(int[] arr, int i) {
+
+		if (arr.length == i) {
+			return;
+		}
+		printArray(arr, i + 1);
+		System.out.println(arr[i]);
+
+	}
+
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+
+		printArray(arr, 0);
+
+	}
+
+}
