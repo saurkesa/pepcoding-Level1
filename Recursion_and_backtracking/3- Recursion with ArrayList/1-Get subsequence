@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+/*
+ *input abc
+ *output [, a, b, ab, c, ac, bc, abc]
+ */
+public class GetSubsequence {
+	@SuppressWarnings("unchecked")
+	private static ArrayList<String> getSubsequence(String str) {
+
+		if (str.length() == 0) {
+			ArrayList<String> al = new ArrayList<>();
+			al.add("");
+			return al;
+		}
+		char ch = str.charAt(0);
+		String sub = str.substring(1);
+		ArrayList<String> subsequence = getSubsequence(sub);
+
+		ArrayList<String> empty = new ArrayList<String>();
+
+		for (String str1 : subsequence) {
+			empty.add("" + str1);
+
+			empty.add(ch + str1);
+		}
+		return empty;
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		String str = s1.next();
+
+		ArrayList<String> subsequence = getSubsequence(str);
+		System.out.println(subsequence);
+
+	}
+
+}
