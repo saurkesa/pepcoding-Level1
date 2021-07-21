@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+/*
+ * input 3 3 
+ * output 
+ * hhvv
+hvhv
+hvvh
+vhhv
+vhvh
+vvhh
+ */
+public class PrintMazePath {
+	private static void printMazePath(int sr, int sc, int dr, int dc, String path) {
+
+		if (sr > dr || sc > dc) {
+			return;
+		}
+		if (sr == dr && sc == dc) {
+			System.out.println(path);
+			return;
+		}
+		printMazePath(sr, sc + 1, dr, dc, path + "h");
+		printMazePath(sr + 1, sc, dr, dc, path + "v");
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int m = s1.nextInt();
+		printMazePath(1, 1, n, m, "");
+
+	}
+
+}
