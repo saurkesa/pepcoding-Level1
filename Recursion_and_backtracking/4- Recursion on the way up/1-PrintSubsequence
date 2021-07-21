@@ -1,0 +1,35 @@
+import java.util.Scanner;
+/*
+ * input abc
+ * output
+ * abc
+ab
+ac
+a
+bc
+b
+c
+ */
+public class PrintSubsequence {
+	private static void printSubsequence(String ques, String ans) {
+
+		if (ques.length() == 0) {
+			System.out.println(ans);
+			return;
+		}
+		char ch = ques.charAt(0);
+		String sb = ques.substring(1);
+		printSubsequence(sb, ans + ch);
+		printSubsequence(sb, ans + "");
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		String str = s1.next();
+		printSubsequence(str, "");
+
+	}
+
+}
