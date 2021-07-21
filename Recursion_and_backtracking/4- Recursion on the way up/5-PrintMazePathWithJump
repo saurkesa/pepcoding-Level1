@@ -1,0 +1,37 @@
+import java.util.Scanner;
+/*
+ * input 3 3
+ * output
+ * h1h1 h1v1h1 h1v1v1 h1v1d1 h1v2 h1d1 h2 v1h1h1 v1h1v1 v1h1d1 v1h2 v1v1 v1d1 v2 d1h1 d1v1 d1d1 d2 
+ */
+public class PrintMazePathWithJump {
+	private static void printMazePathWithJump(int sr, int sc, int dr, int dc, String path) {
+		if (sr == dr || sc == dc) {
+			System.out.print(path+" ");
+			return;
+		}
+		for (int ms = 1; ms <= dc - sc; ms++) {
+			printMazePathWithJump(sr, sc + ms, dr, dc, path + "h" + ms);
+
+		}
+		for (int ms = 1; ms <= dr - sr; ms++) {
+			printMazePathWithJump(sr + ms, sc, dr, dc, path + "v" + ms);
+
+		}
+
+		for (int ms = 1; ms <= dr - sr && ms <= dc - sc; ms++) {
+			printMazePathWithJump(sr + ms, sc + ms, dr, dc, path + "d" + ms);
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int m = s1.nextInt();
+		printMazePathWithJump(1, 1, n, m, "");
+
+	}
+
+}
