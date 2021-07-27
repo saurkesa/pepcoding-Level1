@@ -1,0 +1,44 @@
+package DynamicProgrammingAndGreedy;
+
+import java.util.Scanner;
+/*
+ * input
+ * no od element 4
+2
+3
+5
+6
+target 7
+output 5
+
+ */
+public class CoinChangePermutation {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] coins = new int[n];
+		for (int i = 0; i < coins.length; i++) {
+			coins[i] = s1.nextInt();
+		}
+
+		int tar = s1.nextInt();
+
+		int[] dp = new int[tar + 1];
+
+		dp[0] = 1;
+		for (int amt = 1; amt <= tar; amt++) {
+			for (int coin : coins) {
+				if (coin <= amt) {
+
+					int ramt = amt - coin;
+					dp[amt] +=  dp[ramt];
+				}
+			}
+		}
+		System.out.println(dp[tar]);
+
+	}
+
+}
