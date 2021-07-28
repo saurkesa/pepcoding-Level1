@@ -1,0 +1,32 @@
+package DynamicProgrammingAndGreedy;
+
+import java.util.Scanner;
+
+/*
+ * 1. You are given a number n.
+2. You are required to print the number of binary strings of length n with no consecutive 0's.
+
+input 6
+output 21
+ */
+public class CountBinaryString {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int ocount1 = 1;
+		int ocount0 = 1;
+
+		for (int i = 2; i <= n; i++) {
+			int ncount1 = ocount1 + ocount0;
+			int ncount0 = ocount1;
+
+			ocount0 = ncount0;
+			ocount1 = ncount1;
+
+		}
+		System.out.println(ocount0 + ocount1);
+	}
+
+}
