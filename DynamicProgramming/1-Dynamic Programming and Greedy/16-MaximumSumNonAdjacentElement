@@ -1,0 +1,45 @@
+package DynamicProgrammingAndGreedy;
+
+import java.util.Scanner;
+
+/*
+ * 
+ * 1. You are given a number n, representing the count of elements.
+2. You are given n numbers, representing n elements.
+3. You are required to find the maximum sum of a subsequence with no adjacent elements.
+ * input
+ * no of element  6
+5
+10
+10
+100
+5
+6
+
+
+ * output
+ * 116
+ */
+public class MaximumSumNonAdjacentElement {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+
+		int inc = arr[0];
+		int exc = 0;
+		for (int i = 1; i < arr.length; i++) {
+			int ninc = exc + arr[i];
+			int nexc = Math.max(inc, exc);
+			inc = ninc;
+			exc = nexc;
+		}
+		System.out.println(Math.max(inc, exc));
+	}
+
+}
