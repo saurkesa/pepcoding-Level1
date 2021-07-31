@@ -1,0 +1,48 @@
+package DynamicProgrammingAndGreedy;
+
+import java.util.Scanner;
+/*
+ * 
+ * 1. You are given a number n, representing the number of days.
+2. You are given n numbers, where ith number represents price of stock on ith day.
+3. You are required to print the maximum profit you can make if you are allowed infinite transactions.
+Note - There can be no overlapping transaction. One transaction needs to be closed (a buy followed by a sell) before opening another transaction (another buy)
+
+ * input
+ * 3
+1
+2
+3
+ output 2
+
+
+ */
+public class BuyAndSellStock_InfiniteTransactionAllowed {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] prices = new int[n];
+		for (int i = 0; i < prices.length; i++) {
+			prices[i] = s1.nextInt();
+		}
+
+		int bd = 0;// buying date
+		int sd = 0;// selling date
+		int profit = 0;
+
+		for (int i = 1; i < prices.length; i++) {
+			if (prices[i] > prices[i - 1]) {
+				sd++;
+			} else {
+				profit += prices[sd] - prices[bd];
+				sd = bd = i;
+
+			}
+		}
+		profit += prices[sd] - prices[bd];
+		System.out.println(profit);
+	}
+
+}
