@@ -1,0 +1,71 @@
+package DynamicProgrammingAndGreedy;
+
+import java.util.Scanner;
+
+/*
+ * 1. You are given a number n, representing the number of days.
+2. You are given n numbers, where ith number represents price of stock on ith day.
+3. You are required to print the maximum profit you can make if you are allowed infinite transactions, but have to cooldown for 1 day after 1 transaction
+i.e. you cannot buy on the next day after you sell, you have to cooldown for a day at-least before buying again.
+Note - There can be no overlapping transaction. One transaction needs to be closed (a buy followed by a sell) before opening another transaction (another buy).
+
+ * input
+ * 3
+10
+20
+30
+
+output
+20
+
+
+ */
+public class BuyAndSellStockWithCooldown_InfiniteTransactionAllowed {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+
+		int obsp = -arr[0];
+		int ossp = 0;
+		int ocsp = 0;
+
+		for (int i = 1; i < arr.length; i++) {
+			int nbsp = 0;
+			int nssp = 0;
+			int ncsp = 0;
+
+			if (ocsp - arr[i] > obsp) {
+				nbsp = ocsp - arr[i];
+			} else {
+				nbsp = obsp;
+			}
+
+			if (arr[i] + obsp > ossp) {
+				nssp = arr[i] + obsp;
+			} else {
+				nssp = ossp;
+			}
+
+			if (ossp > ocsp) {
+				ncsp = ossp;
+			} else {
+				ncsp = ocsp;
+			}
+			obsp = nbsp;
+			ossp = nssp;
+			ocsp = ncsp;
+
+		}
+		
+		System.out.println(ossp);
+
+	}
+
+}
