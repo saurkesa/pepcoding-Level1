@@ -1,0 +1,59 @@
+package DynamicProgrammingAndGreedy;
+
+import java.util.Scanner;
+/*
+ * 
+ * 1. You are given a number n, representing the number of days.
+2. You are given n numbers, where ith number represents price of stock on ith day.
+3. You are give a number fee, representing the transaction fee for every transaction.
+4. You are required to print the maximum profit you can make if you are allowed infinite transactions, but has to pay "fee" for every closed transaction.
+Note - There can be no overlapping transaction. One transaction needs to be closed (a buy followed by a sell) before opening another transaction (another buy).
+
+ * input
+ * 3
+10
+20
+30
+fee 2
+output 18
+ */
+public class BuyAndSellStockWithTransactionFee_InfiniteTransactionAllowed {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+
+		int fee = s1.nextInt();
+
+		int obsp = -arr[0];// buySelling Price
+		int ossp = 0; // sold selling price
+
+		for (int i = 1; i < arr.length; i++) {
+			int nbsp = 0;
+			int nssp = 0;
+			if (ossp - arr[i] > obsp) {
+				nbsp = ossp - arr[i];
+			} else {
+				nbsp = obsp;
+			}
+
+			if (obsp + arr[i] - fee > ossp) {
+				nssp = obsp + arr[i]-fee;
+			} else {
+				nssp = ossp;
+			}
+
+			obsp = nbsp;
+			ossp = nssp;
+		}
+
+		System.out.println(ossp);
+	}
+
+}
