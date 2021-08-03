@@ -1,0 +1,84 @@
+package DynamicProgrammingAndGreedy;
+
+import java.util.Scanner;
+/*
+ * 
+ * 1. You are given a number n, representing the number of days.
+2. You are given n numbers, where ith number represents price of stock on ith day.
+3. You are required to print the maximum profit you can make if you are allowed two transactions at-most.
+Note - There can be no overlapping transaction. One transaction needs to be closed (a buy followed by a sell) before opening another transaction (another buy).
+ * input 
+ * 9
+11
+6
+7
+19
+4
+1
+6
+18
+4
+output
+30
+
+ */
+public class BuyAndSellStock_TwoTransactionAllowed {
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+
+		int mpist = 0;// maximum profit if sold today
+		int leastsf = arr[0]; // least so for
+
+		int[] dpl = new int[arr.length]; // maximum profit if sold upto today
+
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] < leastsf) {
+				leastsf = arr[i];
+			}
+			mpist = arr[i] - leastsf;
+
+			if (mpist > dpl[i - 1]) {
+				dpl[i] = mpist;
+			} else {
+				dpl[i] = dpl[i - 1];
+
+			}
+		}
+
+		int mpibt = 0;// max profit if bought today
+		int maxat = arr[arr.length - 1];// max at that day
+
+		int[] dpr = new int[arr.length];// max profit today or upto right
+
+		for (int i = arr.length - 2; i >= 0; i--) {
+			if (arr[i] > maxat) {
+				maxat = arr[i];
+			}
+			mpibt = maxat - arr[i];
+
+			if (mpibt > dpr[i + 1]) {
+				dpr[i] = mpibt;
+			} else {
+				dpr[i] = dpr[i + 1];
+			}
+		}
+
+		int op = 0; // overall profit
+
+		for (int i = 0; i < arr.length; i++) {
+			if (dpl[i] + dpr[i] > op) {
+				op = dpl[i] + dpr[i];
+			}
+		}
+		System.out.println(op);
+	}
+
+}
