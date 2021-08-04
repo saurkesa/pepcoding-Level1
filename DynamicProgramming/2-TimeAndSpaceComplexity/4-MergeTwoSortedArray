@@ -1,0 +1,92 @@
+package TimeAndSpaceComplexity;
+
+import java.util.Scanner;
+/*
+ * 
+ * 1. You are given two sorted arrays(a,b) of integers.
+2. You have to merge them and form one sorted array.
+3. You have to do it in linear time complexity.
+
+ * input
+ * 
+ * first array 2
+1
+5
+ second array 3
+2
+7
+9
+output 
+1
+2
+5
+7
+9
+ */
+public class MergeTwoSortedArray {
+	private static int[] mergeTwoSortedArray(int[] one, int[] two) {
+
+		int[] res = new int[one.length + two.length];
+
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		while (i < one.length && j < two.length) {
+			if (one[i] < two[j]) {
+				res[k] = one[i];
+				i++;
+				k++;
+			} else {
+				res[k] = two[j];
+				j++;
+				k++;
+			}
+		}
+
+		while (i < one.length) {
+			res[k] = one[i];
+			i++;
+			k++;
+		}
+
+		while (j < two.length) {
+			res[k] = two[j];
+			j++;
+			k++;
+		}
+
+		return res;
+
+	}
+
+	private static void print(int[] mergeTwoSortedArray) {
+
+		for (int i = 0; i < mergeTwoSortedArray.length; i++) {
+			System.out.println(mergeTwoSortedArray[i]);
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] one = new int[n];
+		for (int i = 0; i < one.length; i++) {
+			one[i] = s1.nextInt();
+		}
+		int m = s1.nextInt();
+
+		int[] two = new int[m];
+
+		for (int j = 0; j < two.length; j++) {
+			two[j] = s1.nextInt();
+		}
+
+		int[] mergeTwoSortedArray = mergeTwoSortedArray(one, two);
+
+		print(mergeTwoSortedArray);
+
+	}
+
+}
