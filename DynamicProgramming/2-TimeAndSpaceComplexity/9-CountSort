@@ -1,0 +1,77 @@
+package TimeAndSpaceComplexity;
+
+import java.util.Scanner;
+
+//applicable when so many data is given but range is less
+/*
+ * find min and max in array
+ * then prepare range and make array
+ * count fequencey and make prefix sum array
+ * reverse iterate original array and fill value in ans array and decrease frequencey
+  input 7
+1
+1
+2
+8
+3
+4
+5
+output 1 1 2 3 4 5 8 
+ */
+public class CountSort {
+
+	private static void countSort(int[] arr, int max, int min) {
+
+		int range = max - min + 1;
+		int[] farr = new int[range];
+
+		for (int i = 0; i < arr.length; i++) {
+			int idx = arr[i] - min;
+			farr[idx]++;
+		}
+		for (int i = 1; i < farr.length; i++) {
+			farr[i] = farr[i] + farr[i - 1]; // prefix sum array
+		}
+
+		int[] ans = new int[arr.length];
+
+		for (int i = arr.length - 1; i >= 0; i--) {
+			int val = arr[i];
+			int pos = farr[val - min];
+			int idx = pos - 1;
+			ans[idx] = val;
+			farr[val - min]--;
+		}
+
+		for (int i = 0; i < ans.length; i++) {
+			arr[i] = ans[i];
+		}
+	}
+
+	private static void print(int[] arr) {
+
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] arr = new int[n];
+		int max = Integer.MIN_VALUE;
+		int min = Integer.MAX_VALUE;
+		for (int i = 0; i < n; i++) {
+			arr[i] = s1.nextInt();
+			max = Math.max(max, arr[i]);
+			min = Math.min(min, arr[i]);
+		}
+
+		countSort(arr, max, min);
+		print(arr);
+
+	}
+
+}
