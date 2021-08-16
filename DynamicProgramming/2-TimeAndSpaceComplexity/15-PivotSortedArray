@@ -1,0 +1,52 @@
+package TimeAndSpaceComplexity;
+
+import java.util.Scanner;
+
+/*
+ * 1. You are given an array(arr) of distinct integers, which is sorted 
+ * and rotated around an unknown point.
+2. You have to find the smallest element in O(logN) time-complexity
+
+input
+5
+30
+40
+50
+10
+20
+output 10
+
+ */
+public class PivotSortedArray {
+
+	private static int pivotSortedArray(int[] arr) {
+		int low = 0;
+		int high = arr.length - 1;
+		while (low < high) {
+			int mid = (low + high) / 2;
+			if (arr[mid] < arr[high]) {
+				high = mid;
+			} else {
+				low = mid+1;
+			}
+
+		}
+		return arr[high];
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = s1.nextInt();
+		}
+
+		int pivotSortedArray = pivotSortedArray(arr);
+		System.out.println(pivotSortedArray);
+
+	}
+
+}
