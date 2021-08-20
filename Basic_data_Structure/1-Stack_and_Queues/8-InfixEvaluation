@@ -67,6 +67,7 @@ public class InfixEvaluation {
 					int operat = operation(v1, v2, opera);
 					operand.push(operat);
 				}
+				 operator.pop();
 			} else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
 				while (operator.size() > 0 && operator.peek() != '(' && precedence(ch) <= precedence(operator.peek())) {
 
