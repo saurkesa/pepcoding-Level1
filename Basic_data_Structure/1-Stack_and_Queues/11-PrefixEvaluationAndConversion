@@ -1,0 +1,67 @@
+package Stack_and_queue;
+
+import java.util.Scanner;
+import java.util.Stack;
+/*
+ * input
+ -+2/*6483
+ output
+2
+((2+((6*4)/8))-3)
+264*8/+3-
+
+ */
+public class PrefixEvaluationAndConversion {
+	private static int operation(int v1, int v2, char ch) {
+
+		if (ch == '+') {
+			return v1 + v2;
+		} else if (ch == '-') {
+			return v1 - v2;
+		} else if (ch == '*') {
+			return v1 * v2;
+		} else {
+			return v1 / v2;
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s1 = new Scanner(System.in);
+		String exp = s1.nextLine();
+
+		Stack<Integer> vs = new Stack<>();
+		Stack<String> ps = new Stack<>();
+		Stack<String> is = new Stack<>();
+
+		for (int i = exp.length() - 1; i >= 0; i--) {
+			char ch = exp.charAt(i);
+
+			if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+
+				int vs1 = vs.pop();
+				int vs2 = vs.pop();
+				int val = operation(vs1, vs2, ch);
+				vs.push(val);
+
+				String ps1 = ps.pop();
+				String ps2 = ps.pop();
+				String pval = ps1 + ps2 + ch;
+				ps.push(pval);
+
+				String is1 = is.pop();
+				String is2 = is.pop();
+				String ival = "(" + is1 + ch + is2 + ")";
+				is.push(ival);
+			} else {
+				vs.push(ch - '0');
+				ps.push(ch + "");
+				is.push(ch + "");
+			}
+		}
+		System.out.println(vs.pop());
+		System.out.println(is.pop());
+		System.out.println(ps.pop());
+	}
+}
