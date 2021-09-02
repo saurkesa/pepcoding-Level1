@@ -1,0 +1,31 @@
+package Stack_and_queue;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+/*
+ * output
+ * [10]
+[10, 20]
+[10, 20, 30]
+10
+10
+[20, 30]
+ */
+public class QueueUsage {
+
+	public static void main(String[] args) {
+		
+		Queue<Integer> que = new ArrayDeque<>();
+		que.add(10);
+		System.out.println(que);
+		que.add(20);
+		System.out.println(que);
+		que.add(30);
+		System.out.println(que);
+		System.out.println(que.peek());
+		System.out.println(que.remove());
+		System.out.println(que);
+
+	}
+
+}
