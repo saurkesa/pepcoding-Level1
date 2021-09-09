@@ -1,0 +1,140 @@
+package LinkedList;
+
+import java.util.Scanner;
+
+/*
+ * 
+ * 1. You are given a partially written LinkedList class.
+2. You are required to complete the body of fold function. The function is expected to place last element after 1st element, 2nd last element after 2nd element and so on. For more insight check the example
+
+Example 1
+1->2->3->4->5
+will fold as
+1->5->2->4->3
+
+Example 2
+1->2->3->4->5->6
+1->6->2->5->3->4
+
+
+ * input
+ * 
+ * 5
+1
+2
+3
+4
+5
+10
+20
+=========output
+1 2 3 4 5 
+1 5 2 4 3 
+10 1 5 2 4 3 20 
+ */
+
+public class FoldLinkedList {
+
+	public static class Node {
+		int data;
+		Node next;
+	}
+
+	public static class LinkedList {
+		Node head;
+		Node tail;
+		int size;
+		Node fleft;
+
+		void addLast(int val) {
+			Node temp = new Node();
+			temp.data = val;
+			temp.next = null;
+
+			if (size == 0) {
+				head = tail = temp;
+			} else {
+				tail.next = temp;
+				tail = temp;
+			}
+
+			size++;
+		}
+
+		public int size() {
+			return size;
+		}
+
+		public void display() {
+			Node temp = head;
+
+			while (temp != null) {
+				System.out.print(temp.data + " ");
+				temp = temp.next;
+			}
+
+			System.out.println();
+
+		}
+
+		public void addFirst(int val) {
+
+			Node temp = new Node();
+			temp.data = val;
+			temp.next = head;
+			head = temp;
+			if (size == 0) {
+				tail = temp;
+			}
+			size++;
+
+		}
+
+		private void foldHelper(Node right, int floor) {
+
+			if (right == null) {
+				return;
+			}
+			foldHelper(right.next, floor + 1);
+
+			if (floor > size / 2) {
+				Node temp = fleft.next;
+				fleft.next = right;
+				right.next = temp;
+				fleft = temp;
+			} else if (floor == size / 2) {
+				tail = right;
+				tail.next = null;
+			}
+
+		}
+
+		public void fold() {
+			fleft = head;
+			foldHelper(fleft, 0);
+		}
+
+	}
+
+	public static void main(String[] args) throws Exception {
+
+		Scanner s1 = new Scanner(System.in);
+		int n1 = s1.nextInt();
+		int[] val1 = new int[n1];
+		LinkedList l1 = new LinkedList();
+		for (int i = 0; i < n1; i++) {
+
+			l1.addLast(s1.nextInt());
+		}
+		int a = s1.nextInt();
+		int b = s1.nextInt();
+		l1.display();
+		l1.fold();
+		l1.display();
+		l1.addFirst(a);
+		l1.addLast(b);
+		l1.display();
+
+	}
+
+}
