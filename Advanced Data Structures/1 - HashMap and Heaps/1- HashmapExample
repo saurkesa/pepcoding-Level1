@@ -1,0 +1,50 @@
+package Hashmap;
+
+import java.util.HashMap;
+import java.util.Set;
+
+/*================ output
+ * {china=200, uk=10, us=25, India=135}
+{china=200, nigeria=12, uk=10, us=30, India=135}
+135
+null
+true
+false
+[china, nigeria, uk, us, India]
+
+==============
+
+china 200
+nigeria 12
+uk 10
+us 30
+India 135
+ */
+public class HashmapExample {
+
+	public static void main(String[] args) {
+
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("India", 135);
+		hm.put("china", 200);
+		hm.put("us", 25);
+		hm.put("uk", 10);
+		System.out.println(hm);
+		hm.put("nigeria", 12);
+		hm.put("us", 30);
+		System.out.println(hm);
+		System.out.println(hm.get("India"));
+		System.out.println(hm.get("australia"));
+		System.out.println(hm.containsKey("India"));
+		System.out.println(hm.containsKey("australia"));
+
+		Set<String> keys = hm.keySet();
+		System.out.println(keys);
+
+		for (String key : hm.keySet()) {
+			Integer val = hm.get(key);
+			System.out.println(key + " " + val);
+		}
+	}
+
+}
