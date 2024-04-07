@@ -52,8 +52,8 @@ public class LongestConsecutiveSequenceOfElement {
 			}
 		}
 
-		int msp = 0;
-		int ml = 0;
+		int msp = 0; // max starting point
+		int ml = 0;  // max length
 		for (int val : arr) {
 			if (hm.get(val) == true) {
 				int tl = 1; // temporary length
