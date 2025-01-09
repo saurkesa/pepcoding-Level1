@@ -102,3 +102,75 @@ public class Test {
 
 	}
 }
+
+4
+check balanced package com;
+
+import java.util.Stack;
+
+public class Test {
+
+	public static void main(String[] args) {
+		String expression = "{[()]}";
+
+		System.out.println(checkBalanced(expression));
+	}
+
+	private static boolean checkBalanced(String expression) {
+
+		Stack<Character> st = new Stack();
+
+		for (int i = 0; i < expression.length(); i++) {
+			char ch = expression.charAt(i);
+
+			if (ch == '{' || ch == '[' || ch == '(') {
+				st.push(ch);
+			} else if (ch == '}' || ch == ']' || ch == ')') {
+				if (st.isEmpty()) {
+					return false;
+				}
+				char top = st.pop();
+				if (ch == '}' && top != '{') {
+					return false;
+				}
+				if (ch == ']' && top != '[') {
+					return false;
+				}
+				if (ch == ')' && top != '(') {
+					return false;
+				}
+
+			}
+		}
+
+		return true;
+
+	}
+}
+==================5
+ Longest substring without repeating characters in a string
+ 
+ public class Test {
+
+	public static void main(String[] args) {
+		String s = "abcdabcbb";
+
+		int start = 0;
+		int maxlength = 0;
+		HashSet<Character> set = new HashSet<>();
+
+		for (int end = 0; end < s.length(); end++) {
+			char currentChar = s.charAt(end);
+
+			while (set.contains(currentChar)) {
+				set.remove(s.charAt(start));
+				start++;
+
+			}
+			set.add(currentChar);
+			maxlength = Math.max(maxlength, end - start + 1);
+		}
+		System.out.println(maxlength);
+
+	}
+}
