@@ -1,0 +1,27 @@
+Sliding Window Problems: Given an array, find the maximum sum of any contiguous subarray of a fixed size k. Discuss the sliding window technique and its time complexity.
+Two-pointer Technique: Write a function to find if a given array has two elements whose sum is equal to a target value. Can you implement this in O(n log n) or O(n)?
+Substring Matching: Implement a function to find the longest substring without repeating characters. How would you optimize it for time efficiency?
+Merge k Sorted Linked Lists: Merge k sorted linked lists and return it as one sorted list. Discuss time and space complexity.
+Cycle Detection: How would you detect a cycle in a linked list? Once detected, how do you find the starting point of the cycle?
+Reversing Nodes in Groups: Reverse nodes of a linked list k at a time and return the modified list. What’s the complexity, and can it be optimized?
+Implement Min Stack: Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Queue using Stacks: Implement a queue using two stacks. Explain the time complexity of enqueue and dequeue operations.
+Expression Evaluation: Write a program to evaluate a postfix expression using a stack. How would you handle large expressions efficiently?
+Binary Search Tree Validation: Given a binary tree, determine if it is a valid binary search tree. What traversal techniques and conditions are needed for efficiency?
+Graph Traversal: Implement both DFS and BFS for a directed graph. How would you use these for topological sorting in a dependency graph?
+Lowest Common Ancestor: Find the lowest common ancestor of two nodes in a binary tree without storing additional parent pointers.
+Binary Tree Zigzag Level Order Traversal: Perform a level order traversal of a binary tree in a zigzag pattern. Discuss how to manage time complexity.
+Kth Largest Element in an Array: Find the k th largest element in an unsorted array. Discuss the different ways to do this and their time complexities.
+Binary Search Variants: How would you implement a rotated sorted array search? Can you optimize it beyond O(log n) ?
+Heap Sort and Quick Select: Discuss scenarios where heap sort and quick select are advantageous. Implement both with a focus on time and space complexity.
+Subarray Sum Equals K: Given an integer array, find the total number of continuous subarrays whose sum equals to k. How would you use a hashmap to achieve O(n) complexity?
+Longest Consecutive Sequence: Given an unsorted array of integers, find the length of the longest consecutive elements sequence. Can you do this in O(n) time using a hash set?
+First Repeating Character: In a stream of characters, find the first character that repeats. How would you optimize it with a hash set or map?
+Classic Two Sum: Given an array and a target sum, find two numbers that add up to the target. Explain the hash map approach to achieve O(n) complexity.
+Three Sum: Find all unique triplets in an array that sum to zero. This problem requires handling duplicates, so discuss an efficient approach using sorting and two-pointer techniques, achieving O(n^2) complexity.
+Four Sum: Given an array, find all unique quadruplets that sum to a target. Explain how sorting combined with a two-pointer approach within nested loops can yield a O(n^3) solution, along with methods to avoid duplicate quadruplets.
+Product of Array Except Self: Given an array, return an array where each element is the product of all elements except itself. Explain how you can do this without division in O(n) time by using prefix and suffix arrays to avoid recomputation.
+Container with Most Water: Given an array of heights, find two lines that together with the x-axis form a container, such that the container holds the most water. This problem uses a two-pointer approach to achieve O(n) time complexity.
+Given a string and an integer k, find the length of the longest substring that contains at most k distinct characters. Discuss the sliding window approach and how to maintain a hash map to track the distinct characters in O(n)
+Minimum Window Substring: Given two strings s and t, find the minimum window in s which contains all characters of t. Use a sliding window approach combined with a hash map to track counts, aiming for O(n) complexity.
+Trapping Rain water: Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water can be trapped after a rain.
